@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import User from './User'
+import './Home.css'
 
 export default class Home extends Component {
     state = {
@@ -8,14 +9,14 @@ export default class Home extends Component {
         },
         users: [
             {
-                createToDo: 'example'
+                createToDo: ''
             }
         ]
     }
     handleOnChange = (e) => {
         if (e.target.id === "toDoEntry")
             this.setState({
-                toDoEntry: e.target.value
+                createToDo: e.target.value
             })
     }
     handleOnClick = () => {
@@ -30,27 +31,26 @@ export default class Home extends Component {
         })
     }
     renderList = () => {
-        return this.state.user.map((users) => {
-            return (
-                <User key={0} createToDo={users.createToDo} />
+        return this.state.users.map((user, i) => {
+            return(
+                <User key={i} createToDo={user.createToDo} />
             )
         })
     }
-
     render() {
         console.log(this.state)
         return (
-            <div>
-                <article>
+            <div className="container">
+                <header>
                     <h1>What Do You Need To Do?</h1>
-                    <div><label>words</label><input id="toDoEntry" onChange={this.handleOnChange} />
+                    <div><input id="toDoEntry" onChange={this.handleOnChange} />
                         <button onClick={this.handleOnClick}>Add</button>
                     </div>
-                </article>
-                <article>
+                </header>
+                <article className="listBody">
                     <h1>What Ya Gotta Do</h1>
                     <div>
-                        {this.renderList}
+                       {this.renderList()}
                     </div>
                 </article>
             </div>

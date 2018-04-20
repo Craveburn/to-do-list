@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactPropTypes from 'prop-types'
+import './User.css'
 
 export default class User extends Component{
     static propTypes = {
