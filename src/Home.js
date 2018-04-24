@@ -49,7 +49,7 @@ export default class Home extends Component {
                 </header>
                 <article className="listBody">
                     <h1>What Ya Gotta Do</h1>
-                    <div>
+                    <div className="renderedList">
                        {this.renderList()}
                     </div>
                 </article>
