@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import User from './User'
 import './Home.css'
+import Contact from './Contact'
 
 export default class Home extends Component {
     state = {
-        user: {
-            createToDo: ''
-        },
+        // user: {
+        //     createToDo: ''
+        // },
         users: [
             {
-                createToDo: ''
+
             }
         ]
     }
@@ -53,6 +54,7 @@ export default class Home extends Component {
                        {this.renderList()}
                     </div>
                 </article>
+                <Contact/>
             </div>
         )
     }

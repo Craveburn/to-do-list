@@ -8,7 +8,7 @@ export default class User extends Component{
     }
     render() {
         return(
-            <div>
+            <div className="listItem">
                 {this.props.createToDo}
             </div>
         )
