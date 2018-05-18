@@ -6,7 +6,10 @@ export default class Contact extends Component {
         return(
             <div className="container2"> This is where the contact me stuff will go
                 <form>
-                    <input className="textBody" type="text"/>
+                   <h2>Name of List: <input/></h2>
+                   <h2>What's Your Name:<input/></h2>
+                   <h3><input type="radio" value="option1"/>Due By:<input/></h3>
+                   <h3><input type="radio" value="option2"/>No Due Date</h3>
                 </form>
             </div>
         )
