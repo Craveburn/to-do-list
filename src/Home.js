@@ -5,12 +5,8 @@ import Contact from './Contact'
 
 export default class Home extends Component {
     state = {
-        // user: {
-        //     createToDo: ''
-        // },
         users: [
             {
-
             }
         ]
     }
