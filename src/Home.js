@@ -1,21 +1,23 @@
 import React, { Component } from 'react'
 import User from './User'
 import './Home.css'
-import Contact from './Contact'
+import { Link } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react'
 
 export default class Home extends Component {
     state = {
         users: [
-            {
-            }
+
         ]
     }
+
     handleOnChange = (e) => {
         if (e.target.id === "toDoEntry")
             this.setState({
                 createToDo: e.target.value
             })
     }
+
     handleOnClick = () => {
         this.setState((prev) => {
             const existingUsers = prev.users
@@ -27,13 +29,15 @@ export default class Home extends Component {
             }
         })
     }
+
     renderList = () => {
         return this.state.users.map((user, i) => {
-            return(
-                <User key={i} createToDo={user.createToDo} />
+            return (
+                <li key={i}><User createToDo={user.createToDo} /></li>
             )
         })
     }
+
     render() {
         console.log(this.state)
         return (
@@ -45,12 +49,14 @@ export default class Home extends Component {
                     </div>
                 </header>
                 <article className="listBody">
-                    <h1>What Ya Gotta Do</h1>
+                    <h1 className="titleName">What Ya Gotta Do</h1>
                     <div className="renderedList">
-                       {this.renderList()}
+                        <ul>
+                            {this.renderList()}
+                        </ul>
                     </div>
+                    <Link to="/Contact">  <Icon color="black" name="mail" size="huge" /> </Link>
                 </article>
-                <Contact/>
             </div>
         )
     }
