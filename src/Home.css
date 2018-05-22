@@ -14,7 +14,10 @@
 
 .renderedList {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    text-align: left;
 }
 
+.titleName {
+    margin-bottom: -7px;
+}

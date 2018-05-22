@@ -1,6 +1,9 @@
 .container2 {
+    margin: 35vh;
     display: flex;
+    justify-content: flex-start;
     flex-direction: column;
-    justify-content: start;
+    width: 600px;
 }
+
 
