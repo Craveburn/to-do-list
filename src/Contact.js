@@ -4,6 +4,23 @@ import { Link } from 'react-router-dom'
 import { Icon, Button, Checkbox, Form } from 'semantic-ui-react'
 
 export default class Contact extends Component {
+
+    state = {
+        contactInfo: []
+    }
+    handleOnClick = () => {
+        this.setState((prev) => {
+            const existingUsers = prev.users
+            existingUsers.push({
+                createToDo: prev.createToDo
+            })
+            return {
+                users: existingUsers
+            }
+        })
+    }
+
+
     render() {
         return (
             <div className="container2"> Send It Boi
