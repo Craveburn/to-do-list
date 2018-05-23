@@ -21,3 +21,9 @@
 .titleName {
     margin-bottom: -7px;
 }
+
+.icon {
+    display:flex;
+    flex-direction: row-reverse;
+    border: black 5px;
+}
