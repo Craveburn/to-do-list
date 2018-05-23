@@ -4,7 +4,7 @@ import './User.css'
 
 export default class User extends Component{
     static propTypes = {
-        createToDo: ReactPropTypes.string
+        createToDo: ReactPropTypes.string,
     }
     render() {
         return(
