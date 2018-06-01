@@ -15,7 +15,7 @@ export default class Contact extends Component {
                 createToDo: prev.createToDo
             })
             return {
-                users: existingUsers
+                contactInfo: existingUsers
             }
         })
     }

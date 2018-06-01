@@ -20,7 +20,17 @@ export default class Home extends Component {
             })
     }
 
-
+    handleOnClick = () => {
+        this.setState((prev) => {
+            const existingUsers = prev.users
+            existingUsers.push({
+                createToDo: prev.createToDo
+            })
+            return {
+                users: existingUsers
+            }
+        })
+    }
 
     renderList = () => {
         return this.state.users.map((user, i) => {
@@ -47,6 +57,7 @@ export default class Home extends Component {
                             {this.renderList()}
                         </ul>
                     </div>
+
                 </article>
                 <div className="icon">
                         <Link to="/Contact">  <Icon color="black" name="mail" size="big" /> </Link>
