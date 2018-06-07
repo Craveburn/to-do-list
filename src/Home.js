@@ -9,7 +9,7 @@ import { Icon } from 'semantic-ui-react'
 export default class Home extends Component {
 
     state = {
-
+        redirected: false
     }
 
     getInfo = async () => {
@@ -31,12 +31,6 @@ export default class Home extends Component {
     }
 
     handleOnClick = async () => {
-        // this.setState((prev) => {
-        //     const existingUsers = prev.users
-        //     existingUsers.push({
-        //         createToDo: prev.createToDo
-        //     })
-        // })
         const listData = {
             method: 'POST',
             mode: 'cors',
@@ -56,23 +50,25 @@ export default class Home extends Component {
         } catch (error) {
             console.log("error", error)
         }
-        // return {
-        //     users: existingUsers
-        // }
     }
 
-    mapList = () => {
-        if(!this.state.users){
-            return <div> ...Loading</div>
-        }else{
-            const theUsers = this.state.users
-            console.log("mapList", theUsers.users)
-            return theUsers.map((key) => {
-            return <li key={key.id} >{key.createToDo}</li>
-       })
+    deleteTheItem = async (id) => {
+        console.log(id)
+        const idObj = { id: id }
+        console.log(idObj)
+        const deleteData = {
+            method: 'DELETE',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(idObj)
         }
+        const deleteItems = await fetch("http://localhost:3001/list", deleteData)
+        const deleteResponse = await deleteItems
+        console.log(this.state)
+        window.location.reload()
     }
-
 
     renderList = async () => {
         const getList = await fetch("http://localhost:3001/list")
@@ -81,20 +77,21 @@ export default class Home extends Component {
         this.setState({
             users: listItems
         })
-        // return listItems.map((user, i) => {
-        //     return (
-        //         <li key={i}><User createToDo={user.createToDo} /></li>
-        //     )
-        // })
     }
+
 
     componentDidMount() {
         this.renderList()
     }
 
     render() {
-        console.log(this.state.users)
-
+        console.log(this.state)
+        if (this.state.redirect) {
+            this.setState({
+                redirect: false
+            })
+        }
+        console.log(this.state)
         return (
             <div className="container">
                 <header>
@@ -107,7 +104,7 @@ export default class Home extends Component {
                     <h1 className="titleName">What Ya Gotta Do</h1>
                     <div className="renderedList">
                         <ul>
-                            <ListItems data={this.state.users}/>
+                            <ListItems data={this.state.users} deleteFunction={this.deleteTheItem} />
                         </ul>
                     </div>
 
