@@ -14,8 +14,7 @@
 
 .renderedList {
     display: flex;
-    flex-direction: column;
-    text-align: left;
+    justify-content: flex-start;
 }
 
 .titleName {
@@ -26,4 +25,10 @@
     display:flex;
     flex-direction: row-reverse;
     border: black 5px;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
