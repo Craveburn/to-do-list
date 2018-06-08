@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import ReactPropTypes from 'prop-types'
 import './Home.css'
 import ListItems from './ListItems'
-import { Link } from 'react-router-dom'
-import { Icon } from 'semantic-ui-react'
 
 
 export default class Home extends Component {
@@ -65,7 +62,7 @@ export default class Home extends Component {
             body: JSON.stringify(idObj)
         }
         const deleteItems = await fetch("http://localhost:3001/list", deleteData)
-        const deleteResponse = await deleteItems
+        await deleteItems
         console.log(this.state)
         window.location.reload()
     }
@@ -85,13 +82,6 @@ export default class Home extends Component {
     }
 
     render() {
-        console.log(this.state)
-        if (this.state.redirect) {
-            this.setState({
-                redirect: false
-            })
-        }
-        console.log(this.state)
         return (
             <div className="container">
                 <header>
@@ -107,11 +97,7 @@ export default class Home extends Component {
                             <ListItems data={this.state.users} deleteFunction={this.deleteTheItem} />
                         </ul>
                     </div>
-
                 </article>
-                <div className="icon">
-                    <Link to="/Contact">  <Icon color="black" name="mail" size="big" /> </Link>
-                </div>
             </div>
         )
     }
