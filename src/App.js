@@ -8,7 +8,9 @@ class App extends Component {
       <Router>
         <div className="App">
           <Switch>
-            <Route exact path="/" component={() => <Home />} />
+            <Route exact path="/"
+            render={props => <Home {...props} /> } />
+            {/*  component={() => <Home />} /> */}
           </Switch>
         </div>
       </Router>
