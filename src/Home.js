@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import './Home.css'
 import ListItems from './ListItems'
-
+import { Input, Button } from 'semantic-ui-react'
 
 export default class Home extends Component {
 
     state = {
-        redirected: false
+        redirect: false
     }
 
     getInfo = async () => {
@@ -39,10 +39,7 @@ export default class Home extends Component {
         try {
             const postList = await fetch('http://localhost:3001/list', listData)
             const list = await postList.json()
-            this.renderList()
-            this.setState({
-
-            })
+            this.getListData()
             console.log("this is the list", list)
         } catch (error) {
             console.log("error", error)
@@ -64,13 +61,12 @@ export default class Home extends Component {
         const deleteItems = await fetch("http://localhost:3001/list", deleteData)
         await deleteItems
         console.log(this.state)
-        window.location.reload()
+        this.getListData()
     }
 
-    renderList = async () => {
+    getListData = async () => {
         const getList = await fetch("http://localhost:3001/list")
         const listItems = await getList.json()
-        console.log("listItems", listItems)
         this.setState({
             users: listItems
         })
@@ -78,7 +74,7 @@ export default class Home extends Component {
 
 
     componentDidMount() {
-        this.renderList()
+        this.getListData()
     }
 
     render() {
@@ -86,15 +82,15 @@ export default class Home extends Component {
             <div className="container">
                 <header>
                     <h1>What Do You Need To Do?</h1>
-                    <div><input id="toDoEntry" onChange={this.handleOnChange} />
-                        <button onClick={this.handleOnClick}>Add</button>
+                    <div><Input id="toDoEntry" onChange={this.handleOnChange} />
+                        <Button color='green' icon='add' inverted onClick={this.handleOnClick} />
                     </div>
                 </header>
                 <article className="listBody">
                     <h1 className="titleName">What Ya Gotta Do</h1>
                     <div className="renderedList">
                         <ul>
-                            <ListItems data={this.state.users} deleteFunction={this.deleteTheItem} />
+                            <ListItems data={this.state.users} deleteFunction={this.deleteTheItem} reRender={this.getListData} />
                         </ul>
                     </div>
                 </article>
