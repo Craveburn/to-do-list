@@ -19,11 +19,12 @@ export default class extends Component {
             return this.props.data.map((key) => {
                 return <div className='listItem' key={key._id}>
                     <ul>
-                        <li>{key.createToDo}
-                        <Button className='button' size='mini' circular color='red' icon='delete' onClick={() => {
+                        <li>
+                        <span>{key.createToDo}</span>
+                        <Button className='button' size='mini' circular color='red' inverted icon='delete' onClick={() => {
                             this.deleteFunction(key._id)
                         }}/>
-                            <EditModal data={key} />
+                            <EditModal data={key} reRender={this.props.reRender} />
                         </li>
                     </ul>
                 </div>
