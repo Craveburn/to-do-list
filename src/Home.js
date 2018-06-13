@@ -38,11 +38,12 @@ export default class Home extends Component {
         }
         try {
             const postList = await fetch('http://localhost:3001/list', listData)
-            const list = await postList.json()
+            await postList.json()
             this.getListData()
-            console.log("this is the list", list)
+            this.setState({
+                createToDo: ""
+            })
         } catch (error) {
-            console.log("error", error)
         }
     }
 
@@ -82,7 +83,7 @@ export default class Home extends Component {
             <div className="container">
                 <header>
                     <h1>What Do You Need To Do?</h1>
-                    <div><Input id="toDoEntry" onChange={this.handleOnChange} />
+                    <div><Input value={this.state.createToDo} id="toDoEntry" onChange={this.handleOnChange} />
                         <Button color='green' icon='add' inverted onClick={this.handleOnClick} />
                     </div>
                 </header>
