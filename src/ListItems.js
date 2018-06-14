@@ -6,7 +6,7 @@ import './ListItems.css'
 export default class extends Component {
 
     deleteFunction = (id) => {
-       this.props.deleteFunction(id)
+        this.props.deleteFunction(id)
     }
 
     render() {
@@ -18,15 +18,14 @@ export default class extends Component {
         else {
             return this.props.data.map((key) => {
                 return <div className='listItem' key={key._id}>
-                    <ul>
-                        <li>
-                        <span>{key.createToDo}</span>
+                    <span className="item">{key.createToDo}</span>
+                    <span></span>
+                    <span className="buttons">
                         <Button className='button' size='mini' circular color='red' inverted icon='delete' onClick={() => {
                             this.deleteFunction(key._id)
-                        }}/>
-                            <EditModal data={key} reRender={this.props.reRender} />
-                        </li>
-                    </ul>
+                        }} />
+                        <EditModal data={key} reRender={this.props.reRender} />
+                    </span>
                 </div>
             })
         }
