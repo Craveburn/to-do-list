@@ -3,3 +3,23 @@ div {
     justify-content: center;
 }
 
+span {
+    display: flex;
+    min-width: 175px;
+}
+
+.item{
+    display: flex;
+    max-width: 100px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: #a6587add
+}
+
+.buttons {
+    display: flex;
+    min-width: 1vw;
+    justify-content: flex-end;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
